@@ -1,0 +1,16 @@
+.playground {
+  width: var(--playground-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+
+.cell {
+  border: 1px solid black;
+  flex-basis: calc(100% / var(--cells-per-row));
+  height: calc(var(--playground-width) / var(--cells-per-row));
+  background: var(--theme-bg-color);
+  cursor: pointer;
+}

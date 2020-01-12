@@ -1,0 +1,31 @@
+:root {
+  --playground-width: 600px;
+  --cells-per-row: 3;
+  --theme-bg-color: #5a438d;
+  --color-box-1: #000000;
+  --color-box-2: #000000;
+  --color-box-3: #000000;
+  --color-box-4: #000000;
+  --color-box-5: #000000;
+  --color-box-6: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: sans-serif;
+  background: var(--theme-bg-color);
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
