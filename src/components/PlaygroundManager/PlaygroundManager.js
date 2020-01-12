@@ -7,7 +7,7 @@ import Button from '../Button/Button'
 const PlaygroundManager = () => {
     return (
         <div className='playground-manager'>
-            <Button link title='Menu' path='/menu'/>
+            <Button link title='Menu' path='/'/>
             <Score />
             <Timer />
             <Button title='New Game'/>

@@ -19,13 +19,21 @@
 body {
   min-height: 100vh;
   font-family: sans-serif;
-  background: var(--theme-bg-color);
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+  filter: drop-shadow(0 0 10px white);
 }
 
-.container {
+.container,
+.wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.wrapper {
+  width: 100%;
+  background: var(--theme-bg-color);
 }
