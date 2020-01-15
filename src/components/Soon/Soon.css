@@ -1,0 +1,18 @@
+.wrapper-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.soon {
+  height: 100%;
+  font-size: 60px;
+  color: #ffffff;
+  background: rgba(226, 199, 142, 0.5);;
+  border: 10px solid rgba(226, 199, 142, 1);;
+  border-radius: 10px;
+  padding: 40px;
+  font-weight: bold;
+  cursor: default;
+}

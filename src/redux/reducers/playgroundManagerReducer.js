@@ -20,7 +20,7 @@ const initialState = {
     cellsPerRow: 5,
     cellsPerCol: 5,
     score: 0,
-    timeLeft: 4,
+    timeLeft: 60,
 }
 
 export const playGroundManagerReducer = (state = initialState, {type}) => {
