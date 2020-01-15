@@ -1,16 +1,56 @@
 .playground {
   width: var(--playground-width);
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 100px;
+  border: 10px solid #776e65;
+  border-radius: 10px;
+  box-sizing: content-box;
 }
 
 .cell {
-  border: 1px solid black;
+  position: relative;
   flex-basis: calc(100% / var(--cells-per-row));
   height: calc(var(--playground-width) / var(--cells-per-row));
   background: var(--theme-bg-color);
   cursor: pointer;
+}
+
+.cell .desired-cell {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: var(--desired-cell-bg-color);
+}
+
+.game-over {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  background: rgba(238, 228, 218, 0.73);
+  color: #776e65;
+  cursor: default;
+  pointer-events: bounding-box;
+}
+
+.game-over h2 {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.game-over p {
+  font-size: 25px;
 }

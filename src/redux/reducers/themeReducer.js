@@ -11,17 +11,15 @@ const colorsArr = [
 
 const getRndThemeColors = () => Math.floor(Math.random() * colorsArr.length)
 
-const testIdx = getRndThemeColors()
+const initialIndex = getRndThemeColors()
 
 const initialState = {
-    // bgColors: null,
-    // color: null,
-    bgColors: colorsArr[testIdx],
-    color: colorsArr[testIdx][0],
+    bgColors: colorsArr[initialIndex],
+    color: colorsArr[initialIndex][0],
 }
 
-export const themeReducer = (state = initialState, action) => {
-    switch (action.type) {
+export const themeReducer = (state = initialState, {type, color}) => {
+    switch (type) {
         case CHANGE_THEME: {
             const bgColors = colorsArr[getRndThemeColors()]
             const color = bgColors[0]
@@ -35,7 +33,7 @@ export const themeReducer = (state = initialState, action) => {
         case CHANGE_COLOR:
             return {
                 ...state,
-                color: action.color,
+                color: color,
             }
         default:
             return state

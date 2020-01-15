@@ -2,8 +2,25 @@ import React, { useEffect } from 'react'
 import Playground from './Playground'
 import { connect } from 'react-redux'
 import { changeColor } from '../../redux/actions/themeActions'
+import { increaseScore } from '../../redux/actions/playgroundManagerActions'
 
-const PlaygroundContainer = ({theme: {color}, changeColor}) => {
+const PlaygroundContainer = ({theme: {bgColors, color}, gameState: {cellsPerRow, cellsPerCol}, changeColor, increaseScore}) => {
+
+    useEffect(() => {
+        const populateDesiredCell = () => {
+            const rndCell = document.querySelectorAll('.cell')[Math.floor(Math.random() * (cellsPerCol * cellsPerRow))]
+            const desiredCell = document.createElement('div')
+            desiredCell.classList.add('desired-cell')
+            document.documentElement.style.setProperty('--desired-cell-bg-color', bgColors[Math.floor(Math.random() * bgColors.length)])
+            rndCell.appendChild(desiredCell)
+            desiredCell.addEventListener('click', () => {
+                rndCell.removeChild(desiredCell)
+                increaseScore()
+                populateDesiredCell()
+            })
+        }
+        populateDesiredCell()
+    }, [cellsPerRow, cellsPerCol, increaseScore, bgColors])
 
     useEffect(() => {
         document.documentElement.style.setProperty('--theme-bg-color', color)
@@ -26,17 +43,14 @@ const PlaygroundContainer = ({theme: {color}, changeColor}) => {
         }
     }, [changeColor])
 
-    const handleClick = e => {
-        console.log(e.currentTarget.dataset.cellIndex)
-    }
-
     return (
-        <Playground handleClick={handleClick} />
+        <Playground cellsPerRow={cellsPerRow} cellsPerCol={cellsPerCol} />
     )
 }
 
 const mapStateToProps = state => ({
     theme: state.theme,
+    gameState: state.gameState,
 })
 
-export default connect(mapStateToProps, {changeColor})(PlaygroundContainer)
+export default connect(mapStateToProps, {changeColor, increaseScore})(PlaygroundContainer)

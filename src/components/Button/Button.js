@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Button = ({title, handleClick, link, path}) => {
     return link
         ? (
-            <Link className='button' to={path}>
+            <Link className='button' to={path} onClick={handleClick}>
                 {title}
             </Link>
         ) : (
