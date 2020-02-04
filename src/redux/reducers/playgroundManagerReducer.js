@@ -1,63 +1,82 @@
-import { NEW_GAME, INCREASE_SCORE, DECREASE_TIME_LEFT, GAME_OVER } from '../actions/playgroundManagerActions'
+import {
+  NEW_GAME,
+  INCREASE_SCORE,
+  DECREASE_TIME_LEFT,
+  GAME_OVER,
+  SET_SCORES,
+  LOGOUT,
+  SET_USER,
+} from '../actions/playgroundManagerActions'
 
-const removeDesiredCell = () => {
-    let desiredCell = document.querySelector('.cell .desired-cell')
-    if (desiredCell) {
-        desiredCell.remove()
-        desiredCell = null
-    }
-}
-
-const removeGameOver = () => {
-    let gameOverNode = document.querySelector('.playground .game-over')
-    if (gameOverNode) {
-        gameOverNode.remove()
-        gameOverNode = null
-    }
+const removeBlockBySelector = selector => {
+  let block = document.querySelector(selector)
+  if (block) {
+    block.remove()
+    block = null
+  }
 }
 
 const initialState = {
-    cellsPerRow: 5,
-    cellsPerCol: 5,
-    score: 0,
-    timeLeft: 60,
+  user: null,
+  cellsPerRow: 5,
+  cellsPerCol: 5,
+  score: 0,
+  scores: null,
+  loadingScores: true,
+  timeLeft: 60,
 }
 
-export const playGroundManagerReducer = (state = initialState, {type}) => {
-    switch (type) {
-        case NEW_GAME: {
-            removeDesiredCell()
-            removeGameOver()
-            return {
-                ...state,
-                score: 0,
-                timeLeft: 4,
-            }
-        }
-        case INCREASE_SCORE:
-            return {
-                ...state,
-                score: state.score + 1,
-            }
-        case DECREASE_TIME_LEFT:
-            return {
-                ...state,
-                timeLeft: state.timeLeft - 1,
-            }
-        case GAME_OVER: {
-            removeDesiredCell()
-            const gameOver = `
+export const playGroundManagerReducer = (state = initialState, { type, scores, user }) => {
+  switch (type) {
+    case NEW_GAME: {
+      removeBlockBySelector('.cell .desired-cell')
+      removeBlockBySelector('.playground .game-over')
+      return {
+        ...state,
+        score: 0,
+        timeLeft: 60,
+      }
+    }
+    case INCREASE_SCORE:
+      return {
+        ...state,
+        score: state.score + 1,
+      }
+    case DECREASE_TIME_LEFT:
+      return {
+        ...state,
+        timeLeft: state.timeLeft - 1,
+      }
+    case GAME_OVER: {
+      removeBlockBySelector('.cell .desired-cell')
+      const gameOver = `
               <div class="game-over">
                 <h2>Game Over</h2>
                 <p>Your score is: ${state.score}</p>
               </div>
             `
-            document.querySelector('.playground').insertAdjacentHTML('afterbegin', gameOver)
-            return {
-                ...state,
-            }
-        }
-        default:
-            return state
+      document.querySelector('.playground').insertAdjacentHTML('afterbegin', gameOver)
+      return {
+        ...state,
+      }
     }
+    case SET_SCORES:
+      return {
+        ...state,
+        scores,
+        loadingScores: false,
+      }
+    case SET_USER:
+      return {
+        ...state,
+        user,
+      }
+    case LOGOUT:
+      return {
+        ...state,
+        user: null,
+      }
+    default:
+      return state
+  }
 }

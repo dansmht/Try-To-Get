@@ -1,0 +1,63 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.auth-form,
+.auth-buttons-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 600px;
+  background: #3d2807 url('../../../src/assets/bg.jpg') no-repeat center center / cover;
+  border-radius: 50px;
+}
+
+.auth-buttons-wrapper button {
+  margin: 20px;
+}
+
+.auth-form {
+  color: #ffffff;
+}
+
+.auth-form h2 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  font-size: 25px;
+}
+
+.auth-form label input {
+  width: 300px;
+  height: 30px;
+  outline: none;
+  border-radius: 12px;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.auth-form label input:focus {
+  border: 3px solid #dbd340;
+}
+
+.auth-form button {
+  margin: 20px auto;
+}

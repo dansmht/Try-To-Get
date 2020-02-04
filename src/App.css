@@ -23,6 +23,7 @@ body {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
   filter: drop-shadow(0 0 10px white);
+  user-select: none;
 }
 
 .container,

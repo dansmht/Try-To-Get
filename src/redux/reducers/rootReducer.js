@@ -4,6 +4,6 @@ import { playGroundManagerReducer } from './playgroundManagerReducer'
 
 
 export const rootReducer = combineReducers({
-    theme: themeReducer,
-    gameState: playGroundManagerReducer,
+  theme: themeReducer,
+  gameState: playGroundManagerReducer,
 })
