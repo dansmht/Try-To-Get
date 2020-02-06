@@ -1,0 +1,30 @@
+.settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.settings {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  padding: 30px;
+  color: #ffffff;
+  background: #3d2807 url('../../../src/assets/bg.jpg') no-repeat center center / cover;
+  border-radius: 50px;
+  overflow: auto;
+  font-size: 1.5rem;
+}
+
+.settings::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.settings h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
