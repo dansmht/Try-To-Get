@@ -7,7 +7,7 @@ import Settings from './components/Settings/Settings'
 import Menu from './components/Menu/Menu'
 import BestScoresContainer from './components/BestScores/BestScoresContainer'
 import About from './components/About/About'
-import Soon from './components/Soon/Soon'
+import Page404 from './components/Page404/Page404'
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
           <Route exact path='/settings' component={Settings} />
           <Route exact path='/best' component={BestScoresContainer} />
           <Route exact path='/about' component={About} />
-          <Route component={Soon} />
+          <Route component={Page404} />
         </Switch>
       </div>
     </div>
