@@ -2,17 +2,26 @@ import React from 'react'
 import './Page404.css'
 import Button from '../Button/Button'
 import Snow from '../Snow/Snow'
+import { connect } from 'react-redux'
+import { getPage404Language } from '../../redux/selectors/languageSelectors'
 
-const Page404 = () => {
+const Page404 = ({ page404Language }) => {
+
+  const { menu, title, description } = page404Language
+
   return (
     <div className='page-404'>
-      <h3>Oops! Nothing was found.</h3>
+      <h3>{title}</h3>
       <h2>404</h2>
-      <p>We can't find the page you're looking for.</p>
-      <Button link title='Go back home' path='/' />
+      <p>{description}</p>
+      <Button link title={menu} path='/' />
       <Snow />
     </div>
   )
 }
 
-export default Page404
+const mapStateToProps = state => ({
+  page404Language: getPage404Language(state),
+})
+
+export default connect(mapStateToProps)(Page404)

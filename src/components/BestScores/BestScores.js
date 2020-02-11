@@ -1,19 +1,24 @@
 import React from 'react'
 import './BestScores.css'
+import { connect } from 'react-redux'
 import BackToMenu from '../BackToMenu/BackToMenu'
 import Snow from '../Snow/Snow'
 import UserBtnContainer from '../User/UserBtnContainer'
 import AuthForm from '../AuthForm/AuthForm'
+import { getBestScoresLanguage } from '../../redux/selectors/languageSelectors'
 
-const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser }) => {
+const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser, bestScoresLanguage }) => {
+
+  const { menu, title, username, score, size, auth } = bestScoresLanguage
+
   return (
     <>
       <div className='best-scores-wrapper'>
-        <BackToMenu />
+        <BackToMenu title={menu} />
         <section className='best-scores'>
-          <h2>Best Scores</h2>
+          <h2>{title}</h2>
           <div className="score-header">
-            <span>Username</span><span>Score</span><span>Size</span>
+            <span>{username}</span><span>{score}</span><span>{size}</span>
           </div>
           {
             scores
@@ -22,7 +27,7 @@ const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser })
               </li>)}</ol>
               : loading ? <div className='center'>Loading...</div> : <div className='center'>No records</div>
           }
-          <UserBtnContainer setShowAuthForm={setShowAuthForm} />
+          <UserBtnContainer setShowAuthForm={setShowAuthForm} title={auth} />
         </section>
         <Snow />
       </div>
@@ -31,4 +36,8 @@ const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser })
   )
 }
 
-export default BestScores
+const mapStateToProps = state => ({
+  bestScoresLanguage: getBestScoresLanguage(state),
+})
+
+export default connect(mapStateToProps)(BestScores)

@@ -1,0 +1,65 @@
+.checkbox {
+  display: none;
+}
+
+.checkbox + label {
+  --btnWidth: 34px;
+  --switchWidth: 80px;
+  --switchHeight: 40px;
+  --padding: 3px;
+  display: inline-block;
+  position: relative;
+  width: calc(var(--switchWidth));
+  height: calc(var(--switchHeight));
+  background: linear-gradient(to right, #fd1a15 0, #fc8b34 45%, #7fd03e 55%, #007177 100%) 0 0;
+  background-size: calc((var(--switchWidth) * 2) + 50px) 100%;
+  border-radius: 70px;
+  padding: var(--padding);
+  cursor: pointer;
+  transition: all 500ms ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
+}
+
+.checkbox.language + label:before,
+.checkbox + label:before {
+  content: 'Off';
+  width: var(--btnWidth);
+  height: var(--btnWidth);
+  position: absolute;
+  left: var(--padding);
+  top: var(--padding);
+  border-radius: 100%;
+  background: #fff;
+  text-align: center;
+  line-height: var(--btnWidth);
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fd1a15;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: left 500ms ease, color 500ms ease, transform 150ms ease;
+}
+
+.checkbox + label:active:before {
+  transform: scale(0.95);
+}
+
+.checkbox:checked + label {
+  background-position-x: calc(var(--switchWidth) * -1 - 50px);
+}
+
+.checkbox.language:checked + label:before,
+.checkbox:checked + label:before {
+  content: 'On';
+  color: #007177;
+  left: calc((var(--switchWidth) - var(--btnWidth) - var(--padding)));
+}
+
+.checkbox.language + label:before {
+  content: 'en';
+}
+
+.checkbox.language:checked + label:before {
+  content: 'ru';
+}
