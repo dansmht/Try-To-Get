@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import BackToMenu from '../BackToMenu/BackToMenu'
 import Snow from '../Snow/Snow'
 import { getAboutLanguage } from '../../redux/selectors/languageSelectors'
+import { getSnow } from '../../redux/selectors/settingsSelectors'
 
-const About = ({ aboutLanguage }) => {
+const About = ({ aboutLanguage, isSnow }) => {
 
   const { menu, title, paragraphs } = aboutLanguage
 
@@ -16,13 +17,14 @@ const About = ({ aboutLanguage }) => {
         <h2>{title}</h2>
         {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
       </section>
-      <Snow />
+      {isSnow === 'True' && <Snow />}
     </div>
   )
 }
 
 const mapStateToProps = state => ({
   aboutLanguage: getAboutLanguage(state),
+  isSnow: getSnow(state),
 })
 
 export default connect(mapStateToProps)(About)

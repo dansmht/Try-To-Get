@@ -6,8 +6,9 @@ import Snow from '../Snow/Snow'
 import UserBtnContainer from '../User/UserBtnContainer'
 import AuthForm from '../AuthForm/AuthForm'
 import { getBestScoresLanguage } from '../../redux/selectors/languageSelectors'
+import { getSnow } from '../../redux/selectors/settingsSelectors'
 
-const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser, bestScoresLanguage }) => {
+const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser, bestScoresLanguage, isSnow }) => {
 
   const { menu, title, username, score, size, auth } = bestScoresLanguage
 
@@ -29,7 +30,7 @@ const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser, b
           }
           <UserBtnContainer setShowAuthForm={setShowAuthForm} title={auth} />
         </section>
-        <Snow />
+        {isSnow === 'True' && <Snow />}
       </div>
       {showAuthForm && <AuthForm setShowAuthForm={setShowAuthForm} setUser={setUser} />}
     </>
@@ -38,6 +39,7 @@ const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser, b
 
 const mapStateToProps = state => ({
   bestScoresLanguage: getBestScoresLanguage(state),
+  isSnow: getSnow(state),
 })
 
 export default connect(mapStateToProps)(BestScores)

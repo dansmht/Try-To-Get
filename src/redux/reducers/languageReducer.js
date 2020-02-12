@@ -1,10 +1,9 @@
 import { CHANGE_LANGUAGE } from '../actions/languageActions'
-import React from 'react'
 
-const lsLang = localStorage.getItem('language')
+const language = localStorage.getItem('language') || 'en'
 
 const initialState = {
-  language: lsLang ? lsLang : 'en',
+  language,
   menuEn: {
     startGame: 'Start Game',
     rules: 'Rules',
