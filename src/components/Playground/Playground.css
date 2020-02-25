@@ -54,3 +54,9 @@
 .game-over p {
   font-size: 25px;
 }
+
+@media (max-height: 915px) {
+  .playground {
+    margin-top: 20px;
+  }
+}

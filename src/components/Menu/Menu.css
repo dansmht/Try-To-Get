@@ -25,3 +25,9 @@
 .menu a:nth-child(2) {
   margin-top: 100px;
 }
+
+@media (max-height: 915px) {
+  .menu h1 {
+    top: 5px;
+  }
+}

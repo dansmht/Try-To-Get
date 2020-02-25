@@ -38,3 +38,18 @@
 .color-box:nth-child(5) {
   background: var(--color-box-5);
 }
+
+@media (max-height: 915px) {
+  .theme-colors {
+    position: absolute;
+    top: 100px;
+    left: calc(50vw - 450px);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 80px;
+  }
+  .color-box {
+    margin: 20px 0;
+  }
+}
