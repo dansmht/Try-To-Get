@@ -8,6 +8,7 @@ export const GAME_OVER = 'GAME_OVER'
 export const SET_SCORES = 'SET_SCORES'
 export const SET_USER = 'SET_USER'
 export const LOGOUT = 'LOGOUT'
+export const CHANGE_FIELD_SIZES = 'CHANGE_FIELD_SIZES'
 
 export const newGame = () => ({ type: NEW_GAME })
 export const increaseScore = () => ({ type: INCREASE_SCORE })
@@ -16,6 +17,7 @@ export const gameOver = () => ({ type: GAME_OVER })
 export const setScores = scores => ({ type: SET_SCORES, scores })
 export const setUser = user => ({ type: SET_USER, user })
 export const logout = () => ({ type: LOGOUT })
+export const changeFieldSize = sizes => ({type: CHANGE_FIELD_SIZES, sizes})
 
 export const startNewGame = () => dispatch => {
   dispatch(changeTheme())

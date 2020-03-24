@@ -6,6 +6,7 @@ import {
   SET_SCORES,
   LOGOUT,
   SET_USER,
+  CHANGE_FIELD_SIZES,
 } from '../actions/playgroundManagerActions'
 
 const removeBlockBySelector = selector => {
@@ -26,7 +27,7 @@ const initialState = {
   timeLeft: 60,
 }
 
-export const playGroundManagerReducer = (state = initialState, { type, scores, user }) => {
+export const playGroundManagerReducer = (state = initialState, { type, scores, user, sizes }) => {
   switch (type) {
     case NEW_GAME: {
       removeBlockBySelector('.cell .desired-cell')
@@ -76,6 +77,15 @@ export const playGroundManagerReducer = (state = initialState, { type, scores, u
         ...state,
         user: null,
       }
+    case CHANGE_FIELD_SIZES: {
+      const [cellsPerRow, cellsPerCol] = sizes
+
+      return {
+        ...state,
+        cellsPerRow,
+        cellsPerCol,
+      }
+    }
     default:
       return state
   }

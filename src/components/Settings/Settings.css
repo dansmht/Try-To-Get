@@ -23,8 +23,31 @@
   background: transparent;
 }
 
+.settings div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin: 10px auto;
+}
+
 .settings h2 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 20px;
+}
+
+.select {
+  background: #ff7437;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  border: 1px solid #ffffff;
+  font-size: 16px;
+  line-height: 1.4;
+  padding: 7px 10px;
+  height: 36px;
+  vertical-align: top;
+  outline: 0;
+  appearance: none;
 }
