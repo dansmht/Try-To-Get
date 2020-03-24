@@ -84,7 +84,7 @@ const initialState = {
   },
   authFormEn: {
     login: 'Login',
-    register: 'register',
+    register: 'Register',
     displayName: 'Display Name',
     email: 'Email',
     password: 'Password',
