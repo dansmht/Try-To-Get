@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Menu.css'
 import { connect } from 'react-redux'
-import { startNewGame } from '../../redux/actions/playgroundManagerActions'
+import { logout, setUser, startNewGame } from '../../redux/actions/playgroundManagerActions'
+import AuthForm from '../AuthForm/AuthForm'
 import Button from '../Button/Button'
 import Snow from '../Snow/Snow'
 import { getMenuLanguage } from '../../redux/selectors/languageSelectors'
 import { getSnow } from '../../redux/selectors/settingsSelectors'
+import { getUser } from '../../redux/selectors/gameStateSelectors'
 
-const Menu = ({ startNewGame, menuLanguage, isSnow }) => {
-  const { startGame, rules, settings, bestScores, about } = menuLanguage
+const Menu = ({ user, startNewGame, menuLanguage, isSnow, setUser, logout }) => {
+  const { startGame, rules, settings, bestScores, about, authBtnTitle } = menuLanguage
+
+  const [showAuthForm, setShowAuthForm] = useState(false)
+
+  const handleClick = () => {
+    user
+      ? logout()
+      : setShowAuthForm(true)
+  }
 
   return (
     <div className='menu'>
@@ -18,7 +28,9 @@ const Menu = ({ startNewGame, menuLanguage, isSnow }) => {
       <Button link title={settings} path='/settings' />
       <Button link title={bestScores} path='/best' />
       <Button link title={about} path='/about' />
+      <Button title={user ? user : authBtnTitle} handleClick={handleClick} className='userBtn' />
       {isSnow === 'True' && <Snow />}
+      {showAuthForm && <AuthForm setShowAuthForm={setShowAuthForm} setUser={setUser} />}
     </div>
   )
 }
@@ -26,6 +38,7 @@ const Menu = ({ startNewGame, menuLanguage, isSnow }) => {
 const mapStateToProps = state => ({
   menuLanguage: getMenuLanguage(state),
   isSnow: getSnow(state),
+  user: getUser(state),
 })
 
-export default connect(mapStateToProps, { startNewGame })(Menu)
+export default connect(mapStateToProps, { startNewGame, setUser, logout })(Menu)

@@ -3,14 +3,12 @@ import './BestScores.css'
 import { connect } from 'react-redux'
 import BackToMenu from '../BackToMenu/BackToMenu'
 import Snow from '../Snow/Snow'
-import UserBtnContainer from '../User/UserBtnContainer'
-import AuthForm from '../AuthForm/AuthForm'
 import { getBestScoresLanguage } from '../../redux/selectors/languageSelectors'
 import { getSnow } from '../../redux/selectors/settingsSelectors'
 
-const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser, bestScoresLanguage, isSnow }) => {
+const BestScores = ({ scores, loading, bestScoresLanguage, isSnow }) => {
 
-  const { menu, title, username, score, size, auth } = bestScoresLanguage
+  const { menu, title, username, score, size } = bestScoresLanguage
 
   return (
     <>
@@ -28,11 +26,9 @@ const BestScores = ({ scores, loading, showAuthForm, setShowAuthForm, setUser, b
               </li>)}</ol>
               : loading ? <div className='center'>Loading...</div> : <div className='center'>No records</div>
           }
-          <UserBtnContainer setShowAuthForm={setShowAuthForm} title={auth} />
         </section>
         {isSnow === 'True' && <Snow />}
       </div>
-      {showAuthForm && <AuthForm setShowAuthForm={setShowAuthForm} setUser={setUser} />}
     </>
   )
 }

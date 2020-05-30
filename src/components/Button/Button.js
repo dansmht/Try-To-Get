@@ -2,14 +2,14 @@ import React from 'react'
 import './Button.css'
 import { Link } from 'react-router-dom'
 
-const Button = ({ title, handleClick, link, path }) => {
+const Button = ({ title, handleClick, link, path, className }) => {
   return link
     ? (
-      <Link className='button' to={path} onClick={handleClick}>
+      <Link className={className ? className + ' button' : 'button'} to={path} onClick={handleClick}>
         {title}
       </Link>
     ) : (
-      <button className='button' onClick={handleClick}>
+      <button className={className ? className + ' button' : 'button'} onClick={handleClick}>
         {title}
       </button>
     )

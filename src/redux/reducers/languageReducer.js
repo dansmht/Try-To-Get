@@ -10,6 +10,7 @@ const initialState = {
     settings: 'Settings',
     bestScores: 'Best Scores',
     about: 'About',
+    authBtnTitle: 'Auth',
   },
   menuRu: {
     startGame: 'Начать игру',
@@ -17,6 +18,7 @@ const initialState = {
     settings: 'Настройки',
     bestScores: 'Рекорды',
     about: 'Обо мне',
+    authBtnTitle: 'Войти',
   },
   gameEn: {
     menu: 'Menu',
@@ -72,7 +74,6 @@ const initialState = {
     username: 'Username',
     score: 'Score',
     size: 'Size',
-    auth: 'Auth',
   },
   bestScoresRu: {
     menu: 'Меню',
@@ -80,7 +81,6 @@ const initialState = {
     username: 'Имя',
     score: 'Очки',
     size: 'Размер',
-    auth: 'Войти',
   },
   authFormEn: {
     login: 'Login',
